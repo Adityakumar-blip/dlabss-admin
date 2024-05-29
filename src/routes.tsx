@@ -8,7 +8,10 @@ import {
   MdOutlineShoppingCart,
   MdBarChart,
   MdPerson,
+  MdCode,
+  MdTag,
   MdLock,
+  MdTerminal,
 } from 'react-icons/md';
 
 const routes = [
@@ -20,30 +23,48 @@ const routes = [
   },
   {
     name: 'Users',
-    layout: '/users',
+    layout: '/admin',
     path: 'users',
     icon: <MdPerson className="h-6 w-6" />,
   },
   {
-    name: 'NFT Marketplace',
+    name: 'Projects',
     layout: '/admin',
-    path: 'nft-marketplace',
-    icon: <MdOutlineShoppingCart className="h-6 w-6" />,
+    path: 'projects',
+    icon: <MdTerminal className="h-6 w-6" />,
+  },
+  {
+    name: 'Technologies',
+    layout: '/admin',
+    path: 'technologies',
+    icon: <MdCode className="h-6 w-6" />,
+  },
+  {
+    name: 'Tags',
+    layout: '/admin',
+    path: 'tags',
+    icon: <MdTag className="h-6 w-6" />,
+  },
+  // {
+  //   name: 'NFT Marketplace',
+  //   layout: '/admin',
+  //   path: 'nft-marketplace',
+  //   icon: <MdOutlineShoppingCart className="h-6 w-6" />,
 
-    secondary: true,
-  },
-  {
-    name: 'Data Tables',
-    layout: '/admin',
-    icon: <MdBarChart className="h-6 w-6" />,
-    path: 'data-tables',
-  },
-  {
-    name: 'Profile',
-    layout: '/admin',
-    path: 'profile',
-    icon: <MdPerson className="h-6 w-6" />,
-  },
+  //   secondary: true,
+  // },
+  // {
+  //   name: 'Data Tables',
+  //   layout: '/admin',
+  //   icon: <MdBarChart className="h-6 w-6" />,
+  //   path: 'data-tables',
+  // },
+  // {
+  //   name: 'Profile',
+  //   layout: '/admin',
+  //   path: 'profile',
+  //   icon: <MdPerson className="h-6 w-6" />,
+  // },
   // {
   //   name: 'Sign In',
   //   layout: '/auth',

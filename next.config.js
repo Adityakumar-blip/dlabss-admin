@@ -9,8 +9,6 @@
 
 const nextConfig = {
   swcMinify: true,
-  basePath: '/dlabss',
-  assetPrefix: '/dlabss',
   images: {
     domains: [
       'images.unsplash.com',
