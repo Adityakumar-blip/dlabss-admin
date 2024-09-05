@@ -1,14 +1,7 @@
+'use client';
 import { redirect } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function Home() {
-  const token =
-    typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-
-  if (token) {
-    redirect('/admin/default');
-  } else {
-    redirect('/auth/sign-in');
-  }
-
-  return null;
+  return <>Welcome</>;
 }

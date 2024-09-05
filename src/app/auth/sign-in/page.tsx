@@ -4,14 +4,30 @@ import Default from 'components/auth/variants/DefaultAuthLayout';
 import { FcGoogle } from 'react-icons/fc';
 import Checkbox from 'components/checkbox';
 import { useFormik } from 'formik';
+import { useLogin } from 'api/auth';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import useLocalStorage from 'hooks/useLocalStorage';
 
 function SignInDefault() {
+  const router = useRouter();
+  const [token, setToken] = useLocalStorage('token');
+  const { mutate: login, isLoading, error, isSuccess, data } = useLogin();
   const formik = useFormik({
     initialValues: { email: '', password: '' },
     onSubmit: (values) => {
-      localStorage.setItem('token', 'testtoken123');
+      login(values);
+      if (data.code === 200) {
+        setToken(data.data.token);
+      }
     },
   });
+
+  useEffect(() => {
+    if (token) {
+      router.push('/admin/default');
+    }
+  }, [token]);
   return (
     <Default
       maincard={
@@ -38,7 +54,8 @@ function SignInDefault() {
               placeholder="mail@simmmple.com"
               id="email"
               type="text"
-              name=' : "email'
+              name="email"
+              onChange={formik.handleChange}
             />
 
             {/* Password */}
@@ -50,6 +67,7 @@ function SignInDefault() {
               id="password"
               name="password"
               type="password"
+              onChange={formik.handleChange}
             />
             {/* Checkbox */}
             <div className="mb-4 flex items-center justify-between px-2">
@@ -69,6 +87,7 @@ function SignInDefault() {
             <button
               onClick={() => formik.handleSubmit()}
               className="linear w-full rounded-xl bg-brand-500 py-3 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
+              disabled={isLoading}
             >
               Sign In
             </button>

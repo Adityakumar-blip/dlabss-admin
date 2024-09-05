@@ -25,6 +25,10 @@ const Navbar = (props: {
   const [darkmode, setDarkmode] = React.useState(
     document.body.classList.contains('dark'),
   );
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+  };
   return (
     <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#0b14374d]">
       <div className="ml-[6px]">
@@ -181,6 +185,7 @@ const Navbar = (props: {
               <a
                 href=" "
                 className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"
+                onClick={() => handleLogout()}
               >
                 Log Out
               </a>
